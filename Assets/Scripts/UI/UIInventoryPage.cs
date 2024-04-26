@@ -11,5 +11,21 @@ public class UIInventoryPage : MonoBehaviour
     private RectTransform contentPanel;
 
     List<UIInventoryItem> listOfItems = new List<UIInventoryItem>();
-     
+
+    public void InitializeInventoryUI(int inventorysize) {
+        for(int i = 0; i < inventorysize; i++) {
+            UIInventoryItem uiItem = Instantiate(itemPrefab, Vector3.zero, Quaternion.identity);
+            uiItem.transform.SetParent(contentPanel);
+            listOfItems.Add(uiItem);
+        }
+    }
+
+    public void Show() {
+        gameObject.SetActive(true);
+    }
+
+    public void Hide() {
+        gameObject.SetActive(false);
+    }
+
 }
