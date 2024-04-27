@@ -219,7 +219,7 @@ RectTransform:
   m_Children:
   - {fileID: 690150926}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 75.886, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -1176,7 +1176,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventoryUI: {fileID: 633617494}
-  inventorysize: 10
+  inventorysize: 5
 --- !u!1001 &1765368722
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1388,6 +1388,22 @@ PrefabInstance:
     - target: {fileID: 8266246214489061367, guid: 44fd3d2ea187084f89d94b78d8bacd6a, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8547344811146967887, guid: 44fd3d2ea187084f89d94b78d8bacd6a, type: 3}
+      propertyPath: image
+      value: 
+      objectReference: {fileID: -1329444811, guid: 2dca495c6d13d3a49b924292a073a9e1, type: 3}
+    - target: {fileID: 8547344811146967887, guid: 44fd3d2ea187084f89d94b78d8bacd6a, type: 3}
+      propertyPath: title
+      value: Diamond block
+      objectReference: {fileID: 0}
+    - target: {fileID: 8547344811146967887, guid: 44fd3d2ea187084f89d94b78d8bacd6a, type: 3}
+      propertyPath: quantity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8547344811146967887, guid: 44fd3d2ea187084f89d94b78d8bacd6a, type: 3}
+      propertyPath: description
+      value: shiny
       objectReference: {fileID: 0}
     - target: {fileID: 8607341742053850243, guid: 44fd3d2ea187084f89d94b78d8bacd6a, type: 3}
       propertyPath: m_Pivot.x
