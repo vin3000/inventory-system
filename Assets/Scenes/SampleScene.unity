@@ -1317,7 +1317,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventoryUI: {fileID: 633617494}
-  inventorysize: 5
+  inventorysize: 30
 --- !u!1 &1720230976 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 516001028755396233, guid: 5db3c38f14d4195fd8a4a110e5d1281b, type: 3}
@@ -1560,6 +1560,10 @@ PrefabInstance:
       propertyPath: title
       value: Diamond block
       objectReference: {fileID: 0}
+    - target: {fileID: 8547344811146967887, guid: 44fd3d2ea187084f89d94b78d8bacd6a, type: 3}
+      propertyPath: image2
+      value: 
+      objectReference: {fileID: 675368874, guid: 2dca495c6d13d3a49b924292a073a9e1, type: 3}
     - target: {fileID: 8547344811146967887, guid: 44fd3d2ea187084f89d94b78d8bacd6a, type: 3}
       propertyPath: quantity
       value: 1
