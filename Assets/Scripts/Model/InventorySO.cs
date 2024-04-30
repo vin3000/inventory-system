@@ -15,6 +15,8 @@ namespace Inventory.Model
         [field: SerializeField]
         public int Size { get; private set; } = 10;
 
+        public event Action<Dictionary<int, InventoryItem>> OnInventoryUpdated;
+
 
         public void Initialize()
         {
@@ -25,19 +27,34 @@ namespace Inventory.Model
             }
         }
 
-        public void AddItem(ItemSO item, int quantity)
+        public int AddItem(ItemSO item, int quantity)
         {
-            for (int i = 0; i < inventoryItems.Count; i++)
+            if(item.IsStackable == false)
             {
-                if (inventoryItems[i].IsEmpty)
+                for (int i = 0; i < inventoryItems.Count; i++)
                 {
-                    inventoryItems[i] = new InventoryItem
+                    if (IsInventoryFull())
+                        return quantity; //continue from here
+                    if (inventoryItems[i].IsEmpty)
                     {
-                        item = item,
-                        quantity = quantity
-                    };
+                        inventoryItems[i] = new InventoryItem
+                        {
+                            item = item,
+                            quantity = quantity
+                        };
+                        return;
+                    }
                 }
             }
+            quantity = AddStackableItem(item, quantity);
+            InformAboutChange();
+            return quantity;
+
+        }
+
+        private int AddStackableItem(ItemSO item, int quantity)
+        {
+
         }
 
         public Dictionary<int, InventoryItem> GetCurrentInventoryState()
@@ -57,6 +74,24 @@ namespace Inventory.Model
         public InventoryItem GetItemAt(int itemIndex)
         {
             return inventoryItems[itemIndex];
+        }
+
+        public void AddItem(InventoryItem item) 
+        {
+            AddItem(item.item, item.quantity);
+        }
+
+        public void SwapItems(int itemIndex_1, int itemIndex_2)
+        {
+            InventoryItem item1 = inventoryItems[itemIndex_1];
+            inventoryItems[itemIndex_1] = inventoryItems[itemIndex_2];
+            inventoryItems[itemIndex_2] = item1;
+            InformAboutChange();
+        }
+
+        private void InformAboutChange()
+        {
+            OnInventoryUpdated?.Invoke(GetCurrentInventoryState());
         }
     }
 
