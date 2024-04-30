@@ -1317,7 +1317,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventoryUI: {fileID: 633617494}
-  inventorysize: 30
+  inventoryData: {fileID: 11400000, guid: ab826e35a5b0ce7478dba487464215a2, type: 2}
 --- !u!1 &1720230976 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 516001028755396233, guid: 5db3c38f14d4195fd8a4a110e5d1281b, type: 3}
