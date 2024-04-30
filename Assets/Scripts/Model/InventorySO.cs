@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using UnityEngine;
 
 
@@ -36,6 +37,7 @@ namespace Inventory.Model
                 {
                     while(quantity > 0 && !IsInventoryFull())
                     {
+                        PickUpSystem.print("hi");
                         quantity -= AddItemToFirstFreeSlot(item, 1);
                     }
                     InformAboutChange();
@@ -91,7 +93,6 @@ namespace Inventory.Model
                         InformAboutChange();
                         return 0;
                     }
-                    return quantity;
                 }
             }
             while(quantity > 0 && !IsInventoryFull())
