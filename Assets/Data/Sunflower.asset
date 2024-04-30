@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Sunflower
   m_EditorClassIdentifier: 
   <IsStackable>k__BackingField: 0
-  <MaxStackSize>k__BackingField: 1
+  <MaxStackSize>k__BackingField: 64
   <Name>k__BackingField: Sunflower
   <Description>k__BackingField: A beautiful sunflower.
   <ItemImage>k__BackingField: {fileID: 21300000, guid: d2596f4a80d449448b4391f5bb7a8d49, type: 3}
