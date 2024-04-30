@@ -33,23 +33,41 @@ namespace Inventory.Model
             {
                 for (int i = 0; i < inventoryItems.Count; i++)
                 {
-                    if (IsInventoryFull())
-                        return quantity; //continue from here
-                    if (inventoryItems[i].IsEmpty)
+                    while(quantity > 0 && !IsInventoryFull())
                     {
-                        inventoryItems[i] = new InventoryItem
-                        {
-                            item = item,
-                            quantity = quantity
-                        };
-                        return;
+                        quantity -= AddNonStackableItem(item, 1);
                     }
+                    InformAboutChange();
+                    return quantity;
                 }
             }
             quantity = AddStackableItem(item, quantity);
             InformAboutChange();
             return quantity;
 
+        }
+
+        private int AddNonStackableItem(ItemSO item, int quantity)
+        {
+            InventoryItem newItem = new InventoryItem
+            {
+                item = item,
+                quantity = quantity
+            };
+            for (int i = 0; i < inventoryItems.Count; i++)
+            {
+                if (inventoryItems[i].IsEmpty)
+                {
+                    inventoryItems[i] = newItem;
+                    return quantity;
+                }
+            }
+            return 0;
+        }
+
+        private bool IsInventoryFull()
+        {
+            throw new NotImplementedException();
         }
 
         private int AddStackableItem(ItemSO item, int quantity)
