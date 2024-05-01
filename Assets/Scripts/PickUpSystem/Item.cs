@@ -7,7 +7,7 @@ public class Item : MonoBehaviour
 {
     [field: SerializeField]
 
-    public ItemSO InventoryItem { get; set; }
+    public ItemSO InventoryItem { get; private set; }
 
     [field: SerializeField]
 
