@@ -3,7 +3,9 @@ using Inventory.UI;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace Inventory
 {
@@ -17,6 +19,11 @@ namespace Inventory
 
         public List<InventoryItem> initialItems = new List<InventoryItem>();
 
+        [SerializeField]
+        private AudioClip dropClip;
+
+        [SerializeField]
+        private AudioSource audioSource;
 
         private void Start()
         {
@@ -58,7 +65,19 @@ namespace Inventory
 
         private void HandleItemActionRequest(int itemIndex)
         {
+            InventoryItem inventoryItem = inventoryData.GetItemAt(itemIndex);
+            if(inventoryItem.IsEmpty)
+                return;
+            
+            inventoryUI.ShowItemAction(itemIndex);
+            inventoryUI.AddAction("Drop",()=> DropItem(itemIndex, inventoryItem.quantity));
+        }
 
+        private void DropItem(int itemIndex, int quantity)
+        {
+            inventoryData.RemoveItem(itemIndex, quantity);
+            inventoryUI.ResetSelection();
+            audioSource.PlayOneShot(dropClip);
         }
 
         private void HandleDragging(int itemIndex)

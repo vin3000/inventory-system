@@ -37,7 +37,6 @@ namespace Inventory.Model
                 {
                     while(quantity > 0 && !IsInventoryFull())
                     {
-                        PickUpSystem.print("hi");
                         quantity -= AddItemToFirstFreeSlot(item, 1);
                     }
                     InformAboutChange();
@@ -102,6 +101,22 @@ namespace Inventory.Model
                 AddItemToFirstFreeSlot(item, newQuantity);
             }
             return quantity;              
+        }
+
+        public void RemoveItem(int itemIndex, int amount)
+        {
+            if(inventoryItems.Count > itemIndex)
+            {
+                if(inventoryItems[itemIndex].IsEmpty)
+                    return;
+                int remainder = inventoryItems[itemIndex].quantity - amount;
+                if(remainder <= 0)
+                    inventoryItems[itemIndex] = InventoryItem.GetEmptyItem();
+                else
+                    inventoryItems[itemIndex] = inventoryItems[itemIndex].ChangeQuantity(remainder);
+
+                InformAboutChange();
+            }
         }
 
         public Dictionary<int, InventoryItem> GetCurrentInventoryState()

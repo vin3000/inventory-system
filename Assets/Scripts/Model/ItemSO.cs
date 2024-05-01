@@ -28,4 +28,10 @@ namespace Inventory.Model
         public Sprite ItemImage { get; set; }
 
     }
+    public interface IItemAction
+    {
+        public string ActionName { get; }
+
+        bool PerformAction(GameObject character);
+    }
 }
