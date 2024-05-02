@@ -19,7 +19,7 @@ namespace Inventory.UI
         [SerializeField]
         private MouseFollower mouseFollower;
 
-        List<UIInventoryItem> listOfUIItems = new List<UIInventoryItem>();
+        readonly List<UIInventoryItem> listOfUIItems = new();
 
         private int currentlyDraggedItemIndex = -1;
 

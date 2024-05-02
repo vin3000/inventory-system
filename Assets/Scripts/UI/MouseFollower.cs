@@ -25,12 +25,11 @@ public class MouseFollower : MonoBehaviour
 
     void Update()
     {
-        Vector2 position;
         RectTransformUtility.ScreenPointToLocalPointInRectangle(
             (RectTransform)canvas.transform,
             Input.mousePosition,
             canvas.worldCamera,
-            out position
+            out Vector2 position
         );
         transform.position = canvas.transform.TransformPoint(position);
     }

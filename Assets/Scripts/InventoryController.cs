@@ -17,13 +17,22 @@ namespace Inventory
         [SerializeField]
         private InventorySO inventoryData;
 
-        public List<InventoryItem> initialItems = new List<InventoryItem>();
+        public List<InventoryItem> initialItems = new();
 
         [SerializeField]
-        private AudioClip dropClip;
+        private AudioClip DeleteClip;
 
         [SerializeField]
         private AudioSource audioSource;
+
+        [SerializeField]
+        private Item Sunflower;
+
+        [SerializeField]
+        private Item Redflower;
+
+        [SerializeField]
+        private Item Yellowflower;
 
         private void Start()
         {
@@ -70,14 +79,14 @@ namespace Inventory
                 return;
             
             inventoryUI.ShowItemAction(itemIndex);
-            inventoryUI.AddAction("Drop",()=> DropItem(itemIndex, inventoryItem.quantity));
+            inventoryUI.AddAction("Delete",()=> DeleteItem(itemIndex, inventoryItem.quantity));
         }
 
-        private void DropItem(int itemIndex, int quantity)
+        private void DeleteItem(int itemIndex, int quantity)
         {
             inventoryData.RemoveItem(itemIndex, quantity);
             inventoryUI.ResetSelection();
-            audioSource.PlayOneShot(dropClip);
+            audioSource.PlayOneShot(DeleteClip);
         }
 
         private void HandleDragging(int itemIndex)
@@ -125,6 +134,12 @@ namespace Inventory
                 {
                     inventoryUI.Hide();
                 }
+            }
+            if(Input.GetKey(KeyCode.R))
+            {
+                Instantiate(Yellowflower, new Vector3(UnityEngine.Random.Range(-11, 10),1.6f, 0), Quaternion.identity);
+                Instantiate(Sunflower, new Vector3(UnityEngine.Random.Range(-11, 10), 1.6f, 0), Quaternion.identity);
+                Instantiate(Redflower, new Vector3(UnityEngine.Random.Range(-11, 10), 1.6f, 0), Quaternion.identity);
             }
         }
     }

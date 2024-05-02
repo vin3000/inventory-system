@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -27,6 +28,10 @@ namespace Inventory.Model
         [field: SerializeField]
         public Sprite ItemImage { get; set; }
 
+        public static implicit operator ItemSO(InventoryItem v)
+        {
+            throw new NotImplementedException();
+        }
     }
     public interface IItemAction
     {
